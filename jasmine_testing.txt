@@ -1,0 +1,230 @@
+WDI
+======
+## Introduction to Jasmine
+
+###Learning Objectives: (Pick a word to start)
+
+- Apply TDD concepts in javascript
+- Describe how to use and implement specs in Javascript
+
+
+<br>
+---
+
+| **Section** | **Timing** | **Summary** |
+|-------------|------------|-------------|
+| **Opening** | 5 mins |             
+| **We Do :** Install Jasmine and an environment to spec JS | 10 mins | 
+| **I Do :** How to write a spec in Javascript | 10 mins |  
+| **We Do :** Include Jquery-jasmine to test the DOM  | 15 mins |  
+| **We Do :** Create a simple app in TDD with Jasmine. | 15 mins |
+| **I do :** Explain Spies | 10 mins |
+| **Closure** | 10 mins |                                               
+| **Questions** | 10 mins |  
+
+<br>
+---
+
+###Connection to a long term learning goal 
+
+Now that students have a good understanding of javascript , they need to know how to test their code before writing hue codebases
+
+<br>
+---
+
+###Before Class (Student Pre-work)
+
+Students need to know about OOP in javascript, how to manipulate the dom and how to write specs in any other language.
+
+<br>
+---
+
+###Related Homework 
+
+N/A
+<br>
+---
+
+Introduction to Jasmine
+=====
+
+##Opening
+
+Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests. This guide is running against Jasmine version 2.0.0.
+
+<br>
+
+
+
+##We Do: Install Jasmine and an environment to spec JS
+
+First, Download the starter kit [here](https://github.com/jasmine/jasmine/blob/master/dist/jasmine-standalone-2.2.0.zip).
+
+Create a folder `tests` at the same level than your `index.html`. Then unzip the "starter kit" provided in jasmine's build.
+
+Open `SpecRunner.html` and make sure you link your js files are linked in the html source for `specRunner.html`
+
+That's it for the file settings. To make sure we always have the right path defined in the html source. we will run this website (the site and the tests) using a python server:
+
+```
+   python -m SimpleHTTPServer
+```
+
+Run this command from the terminal when you're in the folder containing your website. Now type `http://localhost:8000` in chrome, you should see the index.html .
+
+If you want to check the tests, go to `http://localhost:8000/tests/SpecRunner.html`
+<br>
+
+##I Do: How to write a spec in Javascript
+
+The syntax is really similar to what we've covered in ruby using Rspec.
+
+```
+describe("A suite", function() {
+  it("contains spec with an expectation", function() {
+    expect(true).toBe(true);
+  });
+});
+```
+
+<br>
+
+##We Do: Include Jquery-jasmine to test the DOM 
+
+Jasmine is providing functions to give a structure to the code, but we may just test pure javscript code that do not interact with the DOM. In our case, we will test some javascript rendered in the browser, and also we will use jquery, there is a library that can make our lives easier : [Jasmine-jquery](https://raw.githubusercontent.com/velesin/jasmine-jquery/master/lib/jasmine-jquery.js)
+
+
+
+Download Jasmine-Jquery and add it to the folder tests/lib. Then include Jquery and Jasmine-Jquery before your source files but after all the jasmine libraries are loaded.
+
+Once these files have been configured, let's open `tests/spec/SpecHelper.js`, remove all the existing code and replace it with:
+
+```
+beforeEach(function () {
+  jasmine.getFixtures().fixturesPath = '/';
+});
+
+```
+
+
+This will tell jasmine to load the html files from the root level of the domain.
+
+
+<br>
+
+##We Do: Create a simple app in TDD with Jasmine.
+
+
+We want to create a really simple app, the only element in the document is a button, when this button is pressed, the body should get a different background-color.
+
+To test this app properly, we need to make sure that all the javascript is wrapped in an object. It is almost impossible to test code that is not in an object, especially in Javascript.
+
+We will have two tests for this app:
+
+* The first one test that a function `changeBackground` is called when the user clicks on the button.
+* The second one will test that the background-color property for the body has changed when we execute the method.
+
+let's write these tests and make them pending.
+
+```
+describe("Event", function(){
+  describe(".changeBackground", function(){
+    it("should call changeBackground when button is clicked");
+    
+    it("should change the background color");
+  });
+});
+
+
+```
+
+Reload the test page, Jasmine should show 2 pending tests.
+
+Because we've configured the path for the fixtures, we can now add a `beforeEach` block right after the `describe("Events", function(){})` block of code that will load our `index.html` before each test:
+
+```
+beforeEach( function(){
+    loadFixtures( 'index.html');
+  });
+```
+
+For each test, we want to make sure that we use a new object so we will also call `Event.init()` inside the `beforeEach` block.
+
+##I Do: Explain Spies
+
+For the first test, we actually need to simulate a click event on the button element, then once the event has been fired, we need to make sure that the function `.changeBackground` is called.
+
+When you want to check wether a function is called and how the function is called, like with how many arguments and which arguments, you can use a functionnality called **spies**.
+
+SPies are function that will watch another function and record everyhting happening with this function, means everytime the function is called, which values are passed to this function as arguments, what are the return values for this function etc.
+
+In our case, we just want to make sure that `Event.changeBackground()` is called when the button receive a click event, we can fire a click by using the method `trigger` in Jquery :
+
+```
+$("button").trigger("click");
+```
+
+This code will act like some user is clicking on the button, so after that the method `Event.changeBackground()` should be called. We need to set the spy before we fire the event, so that the spy is actually already watching when the event happen, so we get something like:
+
+```
+it("should call changeBackground when button is clicked", function(){
+   spyOn( Event, 'changeBackground' ); 
+   $("button").trigger("click")
+})
+
+```
+
+
+We're setting the actions to test the code's behavior, but we're not testing anything at the moment, let's add an expectation:
+
+```
+ it("should call changeBackground when button is clicked", function(){
+      spyOn( Events, 'changeBackground' ); 
+      $("button").trigger("click")
+      expect( Events.changeBackground ).toHaveBeenCalled(); 
+    });
+    
+    
+```
+
+the expectation only works because we're watching actions on this method.
+
+<br>
+
+
+#We do: Write a test that verify some changes in the dom 
+
+The second test is going to testthe value of the background color once the method has been executed, it means we need some DOM elements to execute this test and see if it works or not.
+
+This is why we use jquery-jasmine, to be able to use some DOM in our specs.
+
+The first thing in the spec is to launch a click event, but this will break the pattern of single responsibility, means between clicking on the button and changing the background color, a lot of things happens , means a lot of thngs could go wrong during the execution, this spec has only one job, verifying that when the method changebackground is called, the body's background color is different, so the only thing we will ask this test to do is to is to call the method changeBackground and see what happen :
+
+```
+it("should change the background color", function(){
+  Events.changeBackground()
+  element = $("body");
+  expect( element.css("background-color") ).toEqual("rgb(255, 0, 0)"); 
+});
+```
+
+Once the method has been called, you can select the element that need to be checked and verify that the value for the css property is the one expected.
+
+[Here](http://jsfiddle.net/lucassus/4DrrW/light/) is a list of all the jasmine matchers.
+
+
+
+##Closure
+
+Jasmine is a powerful framework to test your javascript, it will help you write clean code so that you can test it.
+
+<br>
+
+
+###CFU
+
+<br>
+
+###Questions
+
+<br>
