@@ -7,7 +7,9 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '570f4e57409f7fdba2df907936a4129349ef303684eb2a72263a85cf149876ca0f7984bbc136949ad16c1977f843ca101b29dc9616fe92b8cf881853217f1bcf'
+  config.sign_out_via = :delete
 
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -233,9 +235,6 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
-
-  config.omniauth :facebook, process.env.FACEBOOK_CLIENT_ID, process.env.FACEBOOK_CLIENT_SECRET
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
