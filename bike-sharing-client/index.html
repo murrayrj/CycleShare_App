@@ -20,8 +20,34 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    <script>
+      function searchLocation() {
+        var mapOptions = {
+          center: new google.maps.LatLng(51.50722, -0.12750),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var mapCanvas = document.getElementById('map-canvas');
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        var geocoder = new google.maps.Geocoder();
+        var locationQuery = document.getElementById('search-box').value;
+        geocoder.geocode( { 'address': locationQuery}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            console.log("hello");
+            map.setCenter(results[0].geometry.location);
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      }
+    </script>
   </head>
   <body>
+    <div id="map-search">
+      <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
+      <input id="submit-button" type="submit" value="Search" onclick="searchLocation()">
+    </div> 
     <div id="map-canvas"></div>
   </body>
 </html>
