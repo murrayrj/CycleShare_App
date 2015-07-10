@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   # You can have the root of your site routed with "root"
   resources :bikes
   resources :users
-  root 'home#index'
+  root 'users#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   # Example of named route that can be invoked with purchase_url(id: product.id)
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # General Settings
-  config.app_domain = 'http://localhost:3000/'
+  config.app_domain = 'http://localhost:3000'
 
   # Email
   config.action_mailer.delivery_method = :smtp
