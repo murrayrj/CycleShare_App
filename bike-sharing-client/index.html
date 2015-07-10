@@ -7,14 +7,24 @@
         height: 400px;
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="google_maps.js"></script>
+    <script src="assets/js/models/bike.js"></script>
+    <script src="assets/js/collections/bike_collection.js"></script>
+    <script src="assets/js/views/bike_view.js"></script>
+    <script src="assets/js/routes/router.js"></script>
+    <script src="assets/js/app.js"></script>
   </head>
   <body>
-    <div id="map-search">
+    <div id="bike">
+    </div>
+ <!--    <div id="map-search">
       <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
       <input id="submit-button" type="submit" value="Search" onclick="searchLocation()">
     </div> 
-    <div id="map-canvas"></div>
+    <div id="map-canvas"></div> -->
   </body>
 </html>
