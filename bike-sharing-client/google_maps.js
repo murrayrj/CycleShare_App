@@ -21,12 +21,4 @@ function searchLocation() {
   });
 }
 
-function populateMap(){
-  
-    return $.ajax({
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code%3A' + postcode + '&key=AIzaSyC6hIkv32HrtRa7PfjZlzfy_JgoMeQyMWE'
-    dataType: 'jsonp'
-  }).done(function (response) {
-}
-
 google.maps.event.addDomListener(window, 'load', initialize);
