@@ -3,7 +3,6 @@ $(document).ready(function () {
   $.when(
     cycleshareApp.bikes.fetch()
   ).then(function () {
-    console.log(postcodes);
     var router = new cycleshareApp.AppRouter();
     Backbone.history.start();
   });
