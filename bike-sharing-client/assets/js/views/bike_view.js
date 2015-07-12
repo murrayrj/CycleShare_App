@@ -1,26 +1,36 @@
-var postcodes = [];
+var bikes = [];
 var coords = [];
+var i;
+var j;
 cycleshareApp.BikeView = Backbone.View.extend({
   el: '#bike',
   render: function () {
     this.collection.each(function (bike) {
-      postcodes.push(bike.attributes.postcode);
+      bikes.push(bike.attributes);
     });
-    for (i = 0; i < postcodes.length; i++) {
+    for (i = 0; i < bikes.length; i++) {
       $.ajax({
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code%3A' + postcodes[i] + '&key=' + Keys.google_maps
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code%3A' + bikes[i].postcode + '&key=' + Keys.google_maps
       }).done(function (response) {
         coords.push(response.results[0].geometry.location);
-        if (coords.length === postcodes.length) {
+        if (coords.length === bikes.length) {
           for (j = 0; j < coords.length; j++) {
-            var myLatlng = new google.maps.LatLng(coords[j].lat, coords[j].lng);
-            var marker = new google.maps.Marker({
-              position: myLatlng,
-              map: map
-            });
+            addInfoWindow(j);
           }
         }
       });
     }
   }
 });
+function addInfoWindow(index) {
+  var infowindow = new google.maps.InfoWindow({
+    content: bikes[index].description
+  });
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(coords[index].lat, coords[index].lng),
+    map: map
+  });
+  google.maps.event.addListener(marker, 'click', function () {
+    infowindow.open(map, marker);
+  });
+}
