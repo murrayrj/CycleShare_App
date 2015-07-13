@@ -18,6 +18,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
         data: bikes[i].postcode,
         url: 'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code%3A' + bikes[i].postcode + '&key=' + Keys.google_maps
       }).done(function (response) {
+        console.log(response)
         if (ajaxCalls.length === bikes.length) {
           for (j = 0; j < ajaxCalls.length; j++) {
             addInfoWindow(j);
