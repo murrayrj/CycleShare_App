@@ -17,6 +17,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
         coords.push(response.results[0].geometry.location);
         if (coords.length === bikes.length) {
           for (j = 0; j < coords.length; j++) {
+            debugger;
             addInfoWindow(j);
           }
         }

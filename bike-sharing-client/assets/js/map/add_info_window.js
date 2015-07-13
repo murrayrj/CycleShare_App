@@ -1,6 +1,6 @@
 function addInfoWindow(index) {
   var infowindow = new google.maps.InfoWindow({
-    content: bikes[index].description
+    content: "<span>" + bikes[index].description+ "</span><span> " + bikes[index].status + "</span>"
   });
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(coords[index].lat, coords[index].lng),
