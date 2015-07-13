@@ -3,7 +3,10 @@ var coords = [];
 var i;
 var j;
 var blue = '../bike-sharing-client/assets/img/med-blue-bike-marker.png';
-var selected = '../bike-sharing-client/assets/img/blue-marker-selected.png'
+var blueselect = '../bike-sharing-client/assets/img/blue-marker-selected.png'
+var red = '../bike-sharing-client/assets/img/med-red-bike-marker.png';
+var redselect = '../bike-sharing-client/assets/img/red-marker-selected.png';
+
 cycleshareApp.BikeView = Backbone.View.extend({
   el: '#bike',
   render: function () {
@@ -17,7 +20,6 @@ cycleshareApp.BikeView = Backbone.View.extend({
         coords.push(response.results[0].geometry.location);
         if (coords.length === bikes.length) {
           for (j = 0; j < coords.length; j++) {
-            debugger;
             addInfoWindow(j);
           }
         }
