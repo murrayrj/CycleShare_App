@@ -6,11 +6,7 @@ function addInfoWindow(index) {
     position: new google.maps.LatLng(coords[index].lat, coords[index].lng),
     map: map
   });
-  if (bikes[index].status === "available") {
-    marker.setIcon(blue);
-  } else {
-    marker.setIcon(red);
-  }
+  setIconColor(marker, index);
   google.maps.event.addListener(marker, 'click', function () {
     if (bikes[index].status === "available") {
       marker.setIcon(blueselect);
@@ -20,11 +16,7 @@ function addInfoWindow(index) {
     infowindow.open(map, marker);
   });
   google.maps.event.addListener(map, 'click', function () {
-    if (bikes[index].status === "available") {
-      marker.setIcon(blue);
-    } else {
-      marker.setIcon(red);
-    }
+    setIconColor(marker, index);
     infowindow.close(map, marker);
   });
 }
