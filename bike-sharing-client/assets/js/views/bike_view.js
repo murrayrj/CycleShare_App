@@ -24,7 +24,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
               position: new google.maps.LatLng(coords.lat, coords.lng),
               status: bikes[j].status,
               map: map,
-              content: "<span>" + bikes[j].description + "</span>"
+              content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;'>Edit</button></div>"
             });
             setIconColor(marker);
             addInfoWindow(marker);
@@ -43,7 +43,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
         position: new google.maps.LatLng(location.lat, location.lng),
         status: bike.attributes.status,
         map: map,
-        content: "<span>" + bike.attributes.description + "</span>"
+        content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bike.attributes.description + "</span><button id='editbike' class='float:right;'>Edit</button></div>"
       });
       setIconColor(marker);
       addInfoWindow(marker);

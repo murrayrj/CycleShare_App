@@ -9,6 +9,11 @@
       .halfpagewidth {
         width: 50%;
       }
+      button#editbike { 
+        background:none;
+        border:none;
+        text-decoration: underline;
+      }
     </style>
     <script src="assets/js/config/env.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -26,6 +31,20 @@
     <script src="assets/js/app.js"></script>
   </head>
   <body>
+  <script>
+  function previewImage(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#upload')
+          .attr('src', e.target.result)
+          .width(150)
+          .height(120);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  </script>
     <div id="bike">
     </div>
     <div id="map-search">
@@ -36,12 +55,19 @@
     </div>
     <div id="form" class="halfpagewidth" style="float:right">
       <form action="#" id="newbike">
-        <label for="description">Description</label>
-        <input type="text" id="description">
-        <label for="postcode">Postcode</label>
-        <input type="text" id="postcode">        
-        <label for="status">Status</label>
-        <input type="text" id="status">
+        <label>Description</label>
+        <input type="text" size="80" id="description"><br>
+        <label>Postcode</label>
+        <input type="text" size="9" id="postcode"><br>     
+        <label>Status</label>
+        <select id="status">
+          <option value="available">Available</option>
+          <option value="rented">Rented</option>
+          <option value="unavailable">Unavailable</option>
+        </select>
+        <br>
+        <input type='file' onchange="previewImage(this);" />
+        <img id="upload" src="#"/><br>
         <input type="submit" value="submit">
       </form>
     </div>
