@@ -2,11 +2,12 @@ var bikes = [];
 var ajaxCalls = [];
 var i;
 var j;
-var blueselect = '../bike-sharing-client/assets/img/blue-marker-selected.png';
-var redselect = '../bike-sharing-client/assets/img/red-marker-selected.png';
 
 cycleshareApp.BikeView = Backbone.View.extend({
-  el: '#bike',
+  el: '#form',
+  events: {
+    'submit form#newbike': 'createBike',
+  },
   render: function () {
     this.collection.each(function (bike) {
       bikes.push(bike.attributes);
@@ -31,5 +32,17 @@ cycleshareApp.BikeView = Backbone.View.extend({
         }
       });
     }
+  },
+  addBike: function (description, postcode, status) {
+    var bike = new cycleshareApp.Bike({description: description, postcode: postcode, status: status});
+    this.collection.create(bike);
+    console.log(this.collection.length);
+  },
+  createBike: function (event) {
+    event.preventDefault();
+    var description = this.$('#description');
+    var postcode = this.$('#postcode');
+    var status = this.$('#status');
+    this.addBike(description.val(), postcode.val(), status.val());
   }
 });

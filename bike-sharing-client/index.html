@@ -3,8 +3,11 @@
   <head>
     <style>
       #map-canvas {
-        width: 650px;
         height: 550px;
+        float: left;
+      }
+      .halfpagewidth {
+        width: 50%;
       }
     </style>
     <script src="assets/js/config/env.js"></script>
@@ -29,6 +32,18 @@
       <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
       <input id="submit-button" type="submit" value="Search" onclick="searchLocation()">
     </div> 
-    <div id="map-canvas"></div>
+    <div id="map-canvas" class="halfpagewidth">
+    </div>
+    <div id="form" class="halfpagewidth" style="float:right">
+      <form action="#" id="newbike">
+        <label for="description">Description</label>
+        <input type="text" id="description">
+        <label for="postcode">Postcode</label>
+        <input type="text" id="postcode">        
+        <label for="status">Status</label>
+        <input type="text" id="status">
+        <input type="submit" value="submit">
+      </form>
+    </div>
   </body>
 </html>
