@@ -11,7 +11,7 @@ function addInfoWindow(marker) {
       marker: this
     });
     prev_infowindow = infowindow;
-    this.setIcon('../bike-sharing-client/assets/img/' + this.color + '-bike-marker.png');
+    this.setIcon('/assets/img/' + this.color + '-bike-marker.png');
     infowindow.open(map, this);
   });
   google.maps.event.addListener(map, 'click', function () {

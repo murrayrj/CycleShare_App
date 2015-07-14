@@ -3,7 +3,6 @@ var bikes = [];
 var ajaxCalls = [];
 var i;
 var j;
-
 cycleshareApp.BikeView = Backbone.View.extend({
   el: '#form',
   events: {

@@ -4,5 +4,5 @@ function setIconColor(marker) {
   } else {
     marker.color = "red";
   }
-  marker.setIcon('../bike-sharing-client/assets/img/med-' + marker.color + '-bike-marker.png');
+  marker.setIcon('/assets/img/med-' + marker.color + '-bike-marker.png');
 }
