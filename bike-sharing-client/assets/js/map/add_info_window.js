@@ -1,23 +1,19 @@
-function addInfoWindow(index) {
-  var coords = ajaxCalls[index].responseJSON.results[0].geometry.location;
-  var infowindow = new google.maps.InfoWindow({
-    content: "<span>" + bikes[index].description + "</span><span> " + bikes[index].status + "</span>"
-  });
-  var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(coords.lat, coords.lng),
-    map: map
-  });
-  setIconColor(marker, index);
+var prev_infowindow = false;
+var infowindow;
+function addInfoWindow(marker) {
   google.maps.event.addListener(marker, 'click', function () {
-    if (bikes[index].status === "available") {
-      marker.setIcon(blueselect);
-    } else {
-      marker.setIcon(redselect);
+    if (prev_infowindow) {
+      prev_infowindow.close();
     }
-    infowindow.open(map, marker);
+    infowindow = new google.maps.InfoWindow({
+      content: this.content
+    });
+    prev_infowindow = infowindow;
+    this.setIcon('../bike-sharing-client/assets/img/' + this.color + '-marker-selected.png');
+    infowindow.open(map, this);
   });
   google.maps.event.addListener(map, 'click', function () {
-    setIconColor(marker, index);
-    infowindow.close(map, marker);
+    setIconColor(marker);
+    prev_infowindow.close(map, marker);
   });
 }

@@ -1,7 +1,8 @@
-function setIconColor(marker, index) {
-  if (bikes[index].status === "available") {
-    marker.setIcon(blue);
+function setIconColor(marker) {
+  if (marker.status === "available") {
+    marker.color = "blue";
   } else {
-    marker.setIcon(red);
+    marker.color = "red";
   }
+  marker.setIcon('../bike-sharing-client/assets/img/med-' + marker.color + '-bike-marker.png');
 }
