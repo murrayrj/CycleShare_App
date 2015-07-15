@@ -57,8 +57,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
       });
     }
   },
-  addBike: function (description, postcode, status) {
-    bike = new cycleshareApp.Bike({description: description, postcode: postcode, status: status});
+  addBikeToMap: function (bike, description, postcode, status) {
     $.ajax({
       url: 'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code%3A' + postcode + '&key=' + Keys.google_maps
     }).done(function (response) {
@@ -72,14 +71,16 @@ cycleshareApp.BikeView = Backbone.View.extend({
       setIconColor(marker);
       addInfoWindow(marker);
     });
-    this.collection.create(bike);
   },
   createBike: function (event) {
     event.preventDefault();
     var description = this.$('#description').val();
     var postcode = this.$('#postcode').val();
     var status = this.$('#status').val();
-    this.addBike(description, postcode, status);
+    debugger;
+    bike = new cycleshareApp.Bike({description: description, postcode: postcode, status: status});
+    this.collection.create(bike);
+    this.addBikeToMap(bike, description, postcode, status);
   },
   updateBike: function () {
     var id = $("#update").data('id');
@@ -93,6 +94,6 @@ cycleshareApp.BikeView = Backbone.View.extend({
     bikeModel.set({description: description, postcode: postcode, status: status});
     bikeModel.save();
     this.collection.set({bikeModel},{remove: false});
-    this.addBike(description, postcode, status);
+    this.addBikeToMap(bikeModel, description, postcode, status);
   }
 });
