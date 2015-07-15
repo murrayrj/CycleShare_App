@@ -1,6 +1,7 @@
 var bike;
 var bikes = [];
 var ajaxCalls = [];
+var markers = [];
 var i;
 var j;
 var indexValue;
@@ -16,6 +17,8 @@ function populateForm(element) {
     status.value = data[this.index].status;
     $('#postcode').val(data[this.index].postcode);
     $('#description').val(data[this.index].description);
+    $('.buttons').empty();
+    $(".buttons").append( "<input type='submit' id='update' data-id='" + data[this.index].id + "' value='update'>" );
   });
 }
 
@@ -23,7 +26,8 @@ cycleshareApp.BikeView = Backbone.View.extend({
   el: '#form',
   events: {
     'submit button#editbike' : 'populateForm',
-    'submit form#newbike': 'createBike'
+    'click input#update' : 'updateBike',
+    'click input#create': 'createBike'
   },
   render: function () {
     this.collection.each(function (bike) {
@@ -42,6 +46,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
               map: map,
               content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;' data-index='" + j +  "' onClick='populateForm(this)'>Edit</button></div>"
             });
+            markers[bikes[j].id] = marker;
             setIconColor(marker);
             addInfoWindow(marker);
           }
@@ -74,4 +79,18 @@ cycleshareApp.BikeView = Backbone.View.extend({
     var status = this.$('#status');
     this.addBike(description.val(), postcode.val(), status.val());
   },
+  updateBike: function () {
+    var id = $("#update").data('id');
+    var marker1 = markers[id];
+    marker1.setMap(null);
+    marker1 = null;
+    var bikeModel = this.collection._byId[id];
+    var description = this.$('#description').val();
+    var postcode = this.$('#postcode').val();
+    var status = this.$('#status').val();
+    bikeModel.set({description: description, postcode: postcode, status: status});
+    bikeModel.save();
+    this.collection.set({bikeModel},{remove: false});
+    this.addBike(description, postcode, status);
+  }
 });
