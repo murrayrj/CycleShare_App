@@ -1,10 +1,11 @@
 var bike;
 var bikes = [];
 var ajaxCalls = [];
-var markers = [];
+var markers = {};
 var i;
 var j;
 var indexValue;
+var bikeModel;
 
 function populateForm(element) {
   indexValue = $(element).data('index');
@@ -14,11 +15,12 @@ function populateForm(element) {
   }).done(function (data) {
     var data = data;
     var status = document.getElementById('status');
+    debugger;
     status.value = data[this.index].status;
     $('#postcode').val(data[this.index].postcode);
     $('#description').val(data[this.index].description);
     $('.buttons').empty();
-    $(".buttons").append( "<input type='submit' id='update' data-id='" + data[this.index].id + "' value='update'>" );
+    $(".buttons").append("<input type='submit' id='update' data-id='" + data[this.index].id + "' value='update'>");
   });
 }
 
@@ -44,9 +46,10 @@ cycleshareApp.BikeView = Backbone.View.extend({
               position: new google.maps.LatLng(coords.lat, coords.lng),
               status: bikes[j].status,
               map: map,
-              content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;' data-index='" + j +  "' onClick='populateForm(this)'>Edit</button></div>"
+              content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;' data-index='" + j +  "' onClick='populateForm(this)'>Edit</button></div>",
+              id: bikes[j].id,
             });
-            markers[bikes[j].id] = marker;
+            markers[marker.id] =  marker;
             setIconColor(marker);
             addInfoWindow(marker);
           }
@@ -70,24 +73,23 @@ cycleshareApp.BikeView = Backbone.View.extend({
       addInfoWindow(marker);
     });
     this.collection.create(bike);
-    console.log(this.collection.length);
   },
   createBike: function (event) {
     event.preventDefault();
-    var description = this.$('#description');
-    var postcode = this.$('#postcode');
-    var status = this.$('#status');
-    this.addBike(description.val(), postcode.val(), status.val());
+    var description = this.$('#description').val();
+    var postcode = this.$('#postcode').val();
+    var status = this.$('#status').val();
+    this.addBike(description, postcode, status);
   },
   updateBike: function () {
     var id = $("#update").data('id');
     var marker1 = markers[id];
     marker1.setMap(null);
     marker1 = null;
-    var bikeModel = this.collection._byId[id];
     var description = this.$('#description').val();
     var postcode = this.$('#postcode').val();
     var status = this.$('#status').val();
+    bikeModel = this.collection._byId[id];
     bikeModel.set({description: description, postcode: postcode, status: status});
     bikeModel.save();
     this.collection.set({bikeModel},{remove: false});
