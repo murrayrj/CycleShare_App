@@ -23,7 +23,6 @@
     <script src="assets/js/models/bike.js"></script>
     <script src="assets/js/collections/bike_collection.js"></script>
     <script src="assets/js/map/initialize.js"></script>
-    <script src="assets/js/map/populate_form.js"></script>
     <script src="assets/js/map/search_location.js"></script>
     <script src="assets/js/map/set_icon_color.js"></script>
     <script src="assets/js/map/add_info_window.js"></script>
@@ -55,22 +54,22 @@
     <div id="map-canvas" class="halfpagewidth">
     </div>
     <div id="form" class="halfpagewidth" style="float:right">
-      <form action="#" id="newbike">
-        <label>Description</label>
-        <input type="text" size="80" id="description"><br>
-        <label>Postcode</label>
-        <input type="text" size="9" id="postcode"><br>     
-        <label>Status</label>
-        <select id="status">
-          <option value="available">Available</option>
-          <option value="rented">Rented</option>
-          <option value="unavailable">Unavailable</option>
-        </select>
-        <br>
-        <input type='file' onchange="previewImage(this);" />
-        <img id="upload" src="#"/><br>
-        <input type="submit" value="submit">
-      </form>
+      <label>Description</label>
+      <input type="text" size="80" id="description"><br>
+      <label>Postcode</label>
+      <input type="text" size="9" id="postcode"><br>     
+      <label>Status</label>
+      <select id="status">
+        <option value="available">Available</option>
+        <option value="rented">Rented</option>
+        <option value="unavailable">Unavailable</option>
+      </select>
+      <br>
+<!--         <input type='file' onchange="previewImage(this);" />
+      <img id="upload" src="#"/><br> -->
+      <div class="buttons">
+        <input type="submit" id="create" value="create">
+      </div>
     </div>
   </body>
 </html>
