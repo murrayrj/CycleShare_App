@@ -23,6 +23,7 @@
     <script src="assets/js/models/bike.js"></script>
     <script src="assets/js/collections/bike_collection.js"></script>
     <script src="assets/js/map/initialize.js"></script>
+    <script src="assets/js/map/populate_form.js"></script>
     <script src="assets/js/map/search_location.js"></script>
     <script src="assets/js/map/set_icon_color.js"></script>
     <script src="assets/js/map/add_info_window.js"></script>
@@ -31,20 +32,20 @@
     <script src="assets/js/app.js"></script>
   </head>
   <body>
-  <script>
-  function previewImage(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#upload')
-          .attr('src', e.target.result)
-          .width(150)
-          .height(120);
-      };
-      reader.readAsDataURL(input.files[0]);
+    <script>
+    function previewImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#upload')
+            .attr('src', e.target.result)
+            .width(150)
+            .height(120);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
-  }
-  </script>
+    </script>
     <div id="bike">
     </div>
     <div id="map-search">

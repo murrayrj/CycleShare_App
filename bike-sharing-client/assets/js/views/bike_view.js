@@ -3,10 +3,27 @@ var bikes = [];
 var ajaxCalls = [];
 var i;
 var j;
+var indexValue;
+
+function populateForm(element) {
+  indexValue = $(element).data('index');
+  $.ajax({
+    url: 'http://localhost:3000/bikes',
+    index: $(element).data('index')
+  }).done(function (data) {
+    var data = data;
+    var status = document.getElementById('status');
+    status.value = data[this.index].status;
+    $('#postcode').val(data[this.index].postcode);
+    $('#description').val(data[this.index].description);
+  });
+}
+
 cycleshareApp.BikeView = Backbone.View.extend({
   el: '#form',
   events: {
-    'submit form#newbike': 'createBike',
+    'submit button#editbike' : 'populateForm',
+    'submit form#newbike': 'createBike'
   },
   render: function () {
     this.collection.each(function (bike) {
@@ -23,7 +40,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
               position: new google.maps.LatLng(coords.lat, coords.lng),
               status: bikes[j].status,
               map: map,
-              content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;'>Edit</button></div>"
+              content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;' data-index='" + j +  "' onClick='populateForm(this)'>Edit</button></div>"
             });
             setIconColor(marker);
             addInfoWindow(marker);
@@ -42,7 +59,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
         position: new google.maps.LatLng(location.lat, location.lng),
         status: bike.attributes.status,
         map: map,
-        content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bike.attributes.description + "</span><button id='editbike' class='float:right;'>Edit</button></div>"
+        content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bike.attributes.description + "</span><button id='editbike' class='float:right;' onClick='populateForm()'>Edit</button></div>"
       });
       setIconColor(marker);
       addInfoWindow(marker);
@@ -56,5 +73,5 @@ cycleshareApp.BikeView = Backbone.View.extend({
     var postcode = this.$('#postcode');
     var status = this.$('#status');
     this.addBike(description.val(), postcode.val(), status.val());
-  }
+  },
 });
