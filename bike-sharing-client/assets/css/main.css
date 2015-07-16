@@ -1,0 +1,30 @@
+#map-canvas
+{
+    float: left;
+    height: 550px;
+}
+.halfpagewidth
+{
+    width: 50%;
+}
+button#editbike
+{
+    float: right;
+    text-decoration: underline;
+    border: none;
+    background: none;
+}
+#info_window
+{
+    width: 285px;
+    height: 235px;
+}
+#photo
+{
+    width: 280px;
+    height: 210px;
+}
+html {
+  background-image: url("/assets/img/dark_circles.png");
+  background-repeat: repeat;
+}
