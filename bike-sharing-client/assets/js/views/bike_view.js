@@ -6,9 +6,11 @@ var i;
 var j;
 var indexValue;
 var bikeModel;
-
 function populateForm(element) {
-  $("nav").toggleClass("formshow");
+  if(toggleBoolean === false) {
+    $("nav").toggleClass("formshow");
+    toggleBoolean = false
+  };
   indexValue = $(element).data('index');
   $.ajax({
     url: 'http://localhost:3000/bikes',
