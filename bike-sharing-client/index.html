@@ -33,37 +33,39 @@
       }
     }
     </script>
-    <div class="header">
-      <h1><span class="blue">Cycle</span><span class="white">Share</span></h1>
-      <div class="get-it-buttons">
-        <a href="#" class="free-trial-button">Sign Up</a>
-        <a href="#" class="buy-it-button">Log In</a>
+    <div id="container">
+      <div class="header">
+        <h1><span class="blue">Cycle</span><span class="white">Share</span></h1>
+        <div class="get-it-buttons">
+          <a href="#" class="free-trial-button">Sign Up</a>
+          <a href="#" class="buy-it-button">Log In</a>
+        </div>
       </div>
-    </div>
-    <div id="bike">
-    </div>
-    <div id="map-search">
-      <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
-      <input id="submit-button" type="submit" value="Search" onclick="searchLocation()">
-    </div> 
-    <div id="map-canvas">
-    </div>
-    <div id="form" style="float:right">
-      <label>Description</label>
-      <input type="text" size="40" id="description"><br>
-      <label>Postcode</label>
-      <input type="text" size="9" id="postcode"><br>     
-      <label>Status</label>
-      <select id="status">
-        <option value="available">Available</option>
-        <option value="rented">Rented</option>
-        <option value="unavailable">Unavailable</option>
-      </select>
-      <br>
-<!--         <input type='file' onchange="previewImage(this);" />
-      <img id="upload" src="#"/><br> -->
-      <div class="buttons">
-        <input type="submit" id="create" value="create">
+      <div id="bike">
+      </div>
+      <div id="map-search">
+        <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
+        <input id="submit-button" type="submit" value="Search" onclick="searchLocation()">
+      </div> 
+      <div id="map-canvas">
+      </div>
+      <div id="form" style="float:right">
+        <label>Description</label>
+        <input type="text" size="40" id="description"><br>
+        <label>Postcode</label>
+        <input type="text" size="9" id="postcode"><br>     
+        <label>Status</label>
+        <select id="status">
+          <option value="available">Available</option>
+          <option value="rented">Rented</option>
+          <option value="unavailable">Unavailable</option>
+        </select>
+        <br>
+  <!--         <input type='file' onchange="previewImage(this);" />
+        <img id="upload" src="#"/><br> -->
+        <div class="buttons">
+          <input type="submit" id="create" value="create">
+        </div>
       </div>
     </div>
   </body>
