@@ -45,7 +45,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
               position: new google.maps.LatLng(coords.lat, coords.lng),
               status: bikes[j].status,
               map: map,
-              content: "<div id='info_window' style='width:150px; height:40px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;' data-index='" + j +  "' onClick='populateForm(this)'>Edit</button></div>",
+              content: "<div id='info_window' style='width:270px; height:220px'><span style='float:left;'>" + bikes[j].description + "</span><button id='editbike' class='float:right;' data-index='" + j +  "' onClick='populateForm(this)'>Edit</button><img src='/assets/img/" + bikes[j].photo + "' style='width:280px; height:210px'></div>",
               id: bikes[j].id,
             });
             markers[marker.id] =  marker;
