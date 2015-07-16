@@ -15,7 +15,6 @@ function populateForm(element) {
   }).done(function (data) {
     var data = data;
     var status = document.getElementById('status');
-    debugger;
     status.value = data[this.index].status;
     $('#postcode').val(data[this.index].postcode);
     $('#description').val(data[this.index].description);
@@ -95,5 +94,10 @@ cycleshareApp.BikeView = Backbone.View.extend({
     bikeModel.save();
     this.collection.set({bikeModel},{remove: false});
     this.addBikeToMap(bikeModel, description, postcode, status);
+    $('#description').val('');
+    $('#postcode').val('');
+    $('#status').val('available');
+    $('.buttons').empty();
+    $(".buttons").append("<input type='submit' id='create' value='create'>");
   }
 });
