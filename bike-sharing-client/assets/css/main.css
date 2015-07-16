@@ -1,11 +1,111 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+html {
+/*  background-image: url("/assets/img/dark_circles.png") repeat;*/
+background-color: lightgray;
+}
+.header {
+  width: 100%;
+  height: 80px;
+  background: url('/assets/img/divider-1.png') no-repeat bottom;
+}
+.get-it-buttons {
+  float: right;
+  height: 60px;
+  width: 330px;
+  margin-top: 10px;
+}
+.free-trial-button, .buy-it-button {
+  display: inline-block;
+  float: left;
+  width: 100px;
+  height: 30px;
+  margin: 12px 10px;
+}
+
+.free-trial-button {
+  background: #a4ce43;
+  background: -webkit-linear-gradient(top, #a4ce43 0%,#54ba47 100%);
+  border: 1px solid #247116;
+  border-radius: 15px;
+  color: #212A12;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px #DCE298;
+}
+
+.buy-it-button {
+  background: #52a8e8;
+  background: -webkit-linear-gradient(top, #0abbff 0%,#009bd6 100%); 
+  border: 1px solid #385B7A;
+  border-radius: 15px;
+  color: #12202F;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px #B5CFEC;
+}
+
+h1 {
+  display: inline-block;
+  color: #474747;
+  font-size: 52px;
+  padding: 12px 10px;
+  font-weight: bold;
+  text-shadow: 0px 1px 2px #000;
+  width: 300px;
+  float: left;
+}
+.blue {
+    color: #00ADEF
+}
+.white
+{
+    color: white;
+}
 #map-canvas
 {
     float: left;
     height: 550px;
+    width: 800px;
 }
-.halfpagewidth
-{
-    width: 50%;
+#map-search {
+  z-index: 1;
+  position: relative;
+  left: 280px;
+  top: 50px; 
 }
 button#editbike
 {
@@ -23,8 +123,4 @@ button#editbike
 {
     width: 280px;
     height: 210px;
-}
-html {
-  background-image: url("/assets/img/dark_circles.png");
-  background-repeat: repeat;
 }

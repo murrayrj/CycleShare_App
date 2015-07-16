@@ -5,6 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="assets/js/models/bike.js"></script>
@@ -32,17 +33,24 @@
       }
     }
     </script>
+    <div class="header">
+      <h1><span class="blue">Cycle</span><span class="white">Share</span></h1>
+      <div class="get-it-buttons">
+        <a href="#" class="free-trial-button">Sign Up</a>
+        <a href="#" class="buy-it-button">Log In</a>
+      </div>
+    </div>
     <div id="bike">
     </div>
     <div id="map-search">
       <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
       <input id="submit-button" type="submit" value="Search" onclick="searchLocation()">
     </div> 
-    <div id="map-canvas" class="halfpagewidth">
+    <div id="map-canvas">
     </div>
-    <div id="form" class="halfpagewidth" style="float:right">
+    <div id="form" style="float:right">
       <label>Description</label>
-      <input type="text" size="80" id="description"><br>
+      <input type="text" size="40" id="description"><br>
       <label>Postcode</label>
       <input type="text" size="9" id="postcode"><br>     
       <label>Status</label>
