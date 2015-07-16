@@ -8,8 +8,8 @@ $(document).ready(function () {
     var router = new cycleshareApp.AppRouter();
     Backbone.history.start();
   });
-    // $(".menu-btn").click(function(event){
-    // event.preventDefault();
-    // $("nav").toggleClass("menushow");
-    // });
+  $("#submit-button").click(function(event){
+    event.preventDefault();
+    searchLocation();
+  })
 });

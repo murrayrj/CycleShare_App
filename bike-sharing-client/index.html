@@ -19,54 +19,33 @@
     <script src="assets/js/app.js"></script>
   </head>
   <body>
-    <script>
-    function previewImage(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#upload')
-            .attr('src', e.target.result)
-            .width(150)
-            .height(120);
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    </script>
     <div id="container">
       <div class="header">
         <h1><span class="blue">Cycle</span><span class="white">Share</span></h1>
-        <div class="get-it-buttons">
-          <a href="#" class="blue-button">Sign Up</a>
-          <a href="#" class="green-button">Log In</a>
-        </div>
-      </div>
-      <div id="bike">
       </div>
       <div id="map-search">
-        <input id="search-box" type="text" placeholder="Searching near you..." class="type-box">
-        <input id="submit-button" class="blue-button" type="submit" value="Search" onclick="searchLocation()">
+        <input id="search-box" type="text" placeholder="Searching near you..." size="40" class="type-box">
+        <input id="submit-button" class="blue-button" type="submit" value="Search">
       </div> 
       <div id="map-canvas">
       </div>
-      <div id="form" style="float:right">
-        <label>Description</label>
-        <input type="text" size="40" id="description"><br>
-        <label>Postcode</label>
-        <input type="text" size="9" id="postcode"><br>     
-        <label>Status</label>
-        <select id="status">
-          <option value="available">Available</option>
-          <option value="rented">Rented</option>
-          <option value="unavailable">Unavailable</option>
-        </select>
-        <br>
-  <!--         <input type='file' onchange="previewImage(this);" />
-        <img id="upload" src="#"/><br> -->
-        <div class="buttons">
-          <input type="submit" id="create" value="create">
+      <nav>
+        <div class="formshow">
+          <label>Description</label>
+          <input type="text" size="30" id="description"><br>
+          <label>Postcode</label>
+          <input type="text" size="9" id="postcode"><br>     
+          <label>Status</label>
+          <select id="status">
+            <option value="available">Available</option>
+            <option value="rented">Rented</option>
+            <option value="unavailable">Unavailable</option>
+          </select><br>
+          <div class="buttons">
+            <input type="submit" id="create" value="create">
+          </div>
         </div>
-      </div>
+      </nav>
     </div>
   </body>
 </html>

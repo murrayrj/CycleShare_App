@@ -8,6 +8,7 @@ var indexValue;
 var bikeModel;
 
 function populateForm(element) {
+  $("nav").toggleClass("formshow");
   indexValue = $(element).data('index');
   $.ajax({
     url: 'http://localhost:3000/bikes',

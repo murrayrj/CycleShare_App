@@ -116,14 +116,11 @@ h1 {
 #map-canvas
 {
     float: left;
-    height: 675px;
+    height: 648px;
     width: 100%;
 }
 #map-search {
   z-index: 1;
-  position: relative;
-  left: 280px;
-  top: 50px; 
 }
 button#editbike
 {
@@ -141,4 +138,23 @@ button#editbike
 {
     width: 280px;
     height: 210px;
+}
+nav {
+    width:250px;
+    background-position: right center;
+    background-color: white;
+    background-size: cover;
+    position: fixed;
+    height: 25%;
+    margin: 17% 0 0 85%;
+    -webkit-transition: .5s ease-in;
+    -moz-transition: .5s ease-in;
+    -o-transition: .5s ease-in;
+    -ms-transition: .5s ease-in;
+    transition: .5s ease-in;
+}
+
+.formshow {
+    margin: 30% 0 0 70%;
+    box-shadow:0 0 50px 0 rgba(0,0,0,.5);
 }
