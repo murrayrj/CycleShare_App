@@ -9,7 +9,7 @@ var bikeModel;
 function populateForm(element) {
   if(toggleBoolean === false) {
     $("nav").toggleClass("formshow");
-    toggleBoolean = false
+    toggleBoolean = false;
   };
   indexValue = $(element).data('index');
   $.ajax({
@@ -85,6 +85,7 @@ cycleshareApp.BikeView = Backbone.View.extend({
     this.addBikeToMap(bike, description, postcode, status);
   },
   updateBike: function () {
+    console.log("update button click")
     var id = $("#update").data('id');
     var marker1 = markers[id];
     marker1.setMap(null);

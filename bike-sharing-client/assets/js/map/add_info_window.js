@@ -3,14 +3,14 @@ var toggleBoolean = false;
 var infowindow;
 function addInfoWindow(marker) {
   google.maps.event.addListener(marker, 'click', function () {
-    if (toggleBoolean === false && prev_infowindow !== false) {
-      $("nav").toggleClass("formshow");
-      toggleBoolean = false;
-    };
-    if (prev_infowindow) {
+    if(prev_infowindow) {
       prev_infowindow.close();
       setIconColor(prev_infowindow.marker);
-    }
+      if (toggleBoolean === false){
+        $("nav").toggleClass("formshow");
+        toggleBoolean = false;
+      }
+    };
     infowindow = new google.maps.InfoWindow({
       content: this.content,
       marker: this

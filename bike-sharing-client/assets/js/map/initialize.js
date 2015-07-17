@@ -4,7 +4,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(51.505, -0.11);
   var mapOptions = {
-    zoom: 12,
+    zoom: 13,
     center: latlng,
     styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#33ccff"},{"visibility":"on"}]}]
   };

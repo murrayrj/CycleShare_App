@@ -79,7 +79,7 @@ background-color: #5C5C5C;
   color: #5C5C5C;
   font-size: 16px;
   text-align: center;
-  line-height: 30px;
+  line-height: 25px;
   text-decoration: none;
   font-weight: bold;
   text-shadow: 0px 1px 1px #B5CFEC;
@@ -147,17 +147,14 @@ nav {
     position: fixed;
     height: 25%;
     margin: -7% 0 0 90%;
-    -webkit-transition: .5s ease-in;
-    -moz-transition: .5s ease-in;
-    -o-transition: .5s ease-in;
-    -ms-transition: .5s ease-in;
-    transition: .5s ease-in;
+    -webkit-transition: .7s ease-in;
+    -moz-transition: .7s ease-in;
+    -o-transition: .7s ease-in;
+    -ms-transition: .7s ease-in;
+    transition: .7s ease-in;
 }
 
 .formshow {
     margin: -4% 0 0 35%;
     box-shadow:0 0 50px 0 rgba(0,0,0,.5);
-}
-.formhide {
-    margin: -7% 0 0 90%;
 }
